@@ -1,0 +1,6 @@
+[submodule "frame-interpolation"]
+	path = frame-interpolation
+	url = https://github.com/google-research/frame-interpolation.git
+[submodule "noto-emoji"]
+	path = noto-emoji
+	url = https://github.com/googlefonts/noto-emoji.git
