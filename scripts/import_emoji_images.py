@@ -29,7 +29,6 @@ def validate_list(src_dir: Path, unicode_list: list[str]):
 
 
 def import_images(src_dir: Path, dst_dir: Path, unicode_list: list[str]):
-    print(dst_dir)
     os.makedirs(dst_dir)
     for i, code in enumerate(unicode_list, start=1):
         print(f"{src_dir / code_to_image_name(code)} -> {dst_dir / f'{i}.png'}")
