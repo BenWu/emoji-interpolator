@@ -20,7 +20,7 @@ scripts/prepare_image_input.py --image-dir ./test_emojis
 
 Create video from sequence:
 ```sh
-python3 -m frame-interpolation.eval.interpolator_cli \
+python3 -m frame_interpolation.eval.interpolator_cli \
      --pattern test_emojis \
      --model_path pretrained_models/film_net/Style/saved_model \
      --times_to_interpolate 5 \
@@ -28,10 +28,29 @@ python3 -m frame-interpolation.eval.interpolator_cli \
      --output_video
 ```
 
-## Build emoji name and codepoint mappings
+## Build emoji name, category, and codepoint list
 
 ```sh
 scripts/build_emoji_name_map.py --dst-dir scripts/
+```
+
+## Bulk interpolate combinations of emoji
+
+Bulk import images:
+```sh
+scripts/bulk_import_images.py \
+  --src-dir noto-emoji/png/512/ \
+  --dst-dir all_emojis/ \
+  --mapping-file scripts/emoji_char_codes.csv
+```
+
+Interpolate all combinations of images in a directory:
+```sh
+scripts/interpolate_all.py \
+  --image-dir all_emojis \
+  --model-path pretrained_models/film_net/Style/saved_model \
+  --times-to-interpolate 4 \
+  --fps 20
 ```
 
 ## Setup
@@ -57,4 +76,4 @@ pacman -S cuda cudnn
 ### Pretrained models
 
 Pretrained models can be found [here](https://github.com/google-research/frame-interpolation#pre-trained-models).
-These are expected to be in `pretrained_models/` in the repo root.
+Above examples expect these to be in `pretrained_models/` in the repo root.
