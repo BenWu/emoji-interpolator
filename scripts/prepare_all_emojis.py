@@ -24,6 +24,9 @@ def build_code_to_name_map(mapping_file: Path) -> Dict[str, str]:
 
         reader = csv.DictReader(f, fieldnames=field_names)
         for line in reader:
+            if line["category"] not in {"people", "nature"} or (line["category"] == "nature" and int(line["index"]) > 124):
+                continue
+
             # fe0f is not used in noto-emoji filenames
             code = line["code"].lower().replace("u+", "").replace(", ", "_").replace("_fe0f", "")
             name = "".join(filter(lambda c: c in ascii_lowercase + "_", line["name"].lower().replace(" ", "_")))
@@ -40,7 +43,7 @@ def move_emojis(src_dir: Path, dst_dir: Path, mapping: Dict[str, str]):
         try:
             dst_file = dst_dir / f"{mapping[image.name]}.png"
         except KeyError as e:
-            print(f"Emoji not found in mapping: {e}, skipping")
+            # print(f"Emoji not found in mapping: {e}, skipping")
             continue
 
         print(f"Copying {image} to {dst_file}")
