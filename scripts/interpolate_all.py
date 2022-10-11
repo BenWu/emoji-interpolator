@@ -39,8 +39,7 @@ def output_frames(frames: List[np.ndarray], fps: int, start_name: str, end_name:
 
     logging.info(f"Wrote {i} frames to {output_dir / f'{start_name}_to_{end_name}'}")
 
-    media.write_video(output_dir / f"{start_name}_to_{end_name}.mp4", frames, fps=fps)
-    media.write_video(output_dir / f"{end_name}_to_{start_name}.mp4", frames[::-1], fps=fps)
+    media.write_video(output_dir / f"{start_name}_to_{end_name}.gif", frames + frames[::-1], fps=fps, codec="gif")
 
 
 def interpolate_all(times_to_interpolate: int, fps: int, image_dir: Path, model_path: Path):

@@ -3,6 +3,10 @@
 Frame interpolation using [FILM](https://github.com/google-research/frame-interpolation) and
 [Noto Emoji](https://github.com/googlefonts/noto-emoji).
 
+|  |  |
+| - | - |
+|  ![worm blow up :O](/assets/exploding_head_to_worm.gif)  |  ![sad :O](/assets/exploding_head_to_pensive_face.gif)  |
+
 ## Create Custom Sequence
 
 Import images from noto using unicode codepoint into a sequence of numbered png's (`1.png`, ...):
@@ -27,6 +31,9 @@ python3 -m frame_interpolation.eval.interpolator_cli \
      --fps 30 \
      --output_video
 ```
+
+
+https://user-images.githubusercontent.com/12437227/194989104-d00e6575-6d43-48ed-9a9a-f49362845a68.mp4
 
 ## Build emoji name, category, and codepoint list
 
